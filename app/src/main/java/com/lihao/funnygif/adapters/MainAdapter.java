@@ -27,6 +27,11 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
         this.mList = mList;
     }
 
+    public void addDatas(List<GifBean> addList){
+        mList.addAll(addList);
+        notifyDataSetChanged();
+    }
+
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.gif_layout,parent,false);

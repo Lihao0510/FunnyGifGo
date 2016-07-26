@@ -1,48 +1,50 @@
 package com.lihao.funnygif.views;
 
-import android.app.Activity;
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.lihao.funnygif.R;
+import com.lihao.funnygif.adapters.MainAdapter;
+import com.lihao.funnygif.modle.GifBean;
+import com.lihao.funnygif.threads.GifTask;
+import com.lihao.funnygif.utils.Constants;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
-public class MainFragment extends Fragment {
-    private Activity mActivity;
+public class MainFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
+    private MainAdapter mAdapter;
+    private List<GifBean> mList ;
 
-
-
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_main,container,false);
+    protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_main, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.main_recyclerview);
+        //initTestData(20);
+        initDatas();
         return view;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mActivity = getActivity();
-        initData();
+    private void initDatas() {
+        String url = Constants.BAOXIAO;
+        GifTask task = new GifTask(mRecyclerView,mActivity);
+        task.execute(url);
     }
 
-    private void initData() {
-        mRecyclerView = new RecyclerView(mActivity);
-
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mActivity = null;
+    private void initTestData(int num) {
+        mList = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            mList.add(new GifBean("Test" + i, "Lihao"));
+        }
+        mAdapter = new MainAdapter(mActivity,mList);
+        StaggeredGridLayoutManager mManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
+        mRecyclerView.setLayoutManager(mManager);
+        mRecyclerView.setAdapter(mAdapter);
     }
 }
