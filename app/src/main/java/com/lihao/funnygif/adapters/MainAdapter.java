@@ -2,15 +2,20 @@ package com.lihao.funnygif.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.lihao.funnygif.R;
 import com.lihao.funnygif.modle.GifBean;
+import com.lihao.funnygif.views.MainActivity;
 
 import java.util.List;
 
@@ -21,20 +26,25 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
 
     private List<GifBean> mList;
     private Context mContext;
+    private int mWidth;
 
     public MainAdapter(Context mContext, List<GifBean> mList) {
         this.mContext = mContext;
         this.mList = mList;
+        WindowManager wm = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
+        mWidth = wm.getDefaultDisplay().getWidth() * 5 / 12;
+        Log.d("Lihao", mWidth + "");
+        //Toast.makeText(mContext,mWidth + "" ,Toast.LENGTH_SHORT).show();
     }
 
-    public void addDatas(List<GifBean> addList){
+    public void addDatas(List<GifBean> addList) {
         mList.addAll(addList);
         notifyDataSetChanged();
     }
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.gif_layout,parent,false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.gif_layout, parent, false);
         MyViewHolder myViewHolder = new MyViewHolder(view);
         return myViewHolder;
     }
@@ -42,7 +52,8 @@ public class MainAdapter extends RecyclerView.Adapter<MainAdapter.MyViewHolder> 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         holder.textView.setText(mList.get(position).getTitle());
-        Glide.with(mContext).load(mList.get(position).getGifUrl()).into(holder.imageView);
+
+        Glide.with(mContext).load(mList.get(position).getGifUrl()).asGif().override(mWidth, (mList.get(position).getHeight() * mWidth) / mList.get(position).getWidth()).diskCacheStrategy(DiskCacheStrategy.NONE).fitCenter().into(holder.imageView);
     }
 
     @Override

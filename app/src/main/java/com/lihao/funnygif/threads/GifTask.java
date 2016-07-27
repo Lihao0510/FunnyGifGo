@@ -2,6 +2,7 @@ package com.lihao.funnygif.threads;
 
 import android.content.Context;
 import android.os.AsyncTask;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
@@ -16,6 +17,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
+import java.io.InterruptedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,11 +44,22 @@ public class GifTask extends AsyncTask<String, Void, List<GifBean>> {
                 Elements subLink = element.getElementsByTag("img");
                 for (Element subElement : subLink) {
                     String gifName = subElement.attr("alt");
-                    gifName = gifName.replace("的gif动态图片",".");
+                    gifName = gifName.replace("的gif动态图片", ".");
                     String gifUrl = subElement.attr("data-original");
+                    String widthString = subElement.attr("width");
+                    String heightString = subElement.attr("height");
+                    int width = 300, height = 200;
+                    try {
+                        width = Integer.parseInt(widthString);
+                        height = Integer.parseInt(heightString);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        width = 300;
+                        height = 200;
+                    }
                     Log.d("Lihao", gifName);
                     Log.d("Lihao", gifUrl);
-                    mList.add(new GifBean(gifName, gifUrl));
+                    mList.add(new GifBean(gifName, gifUrl, width, height));
                 }
             }
         } catch (IOException e) {
@@ -58,6 +71,7 @@ public class GifTask extends AsyncTask<String, Void, List<GifBean>> {
     @Override
     protected void onPostExecute(List<GifBean> gifBeen) {
         MainAdapter mAdapter = new MainAdapter(mContext, gifBeen);
+        //LinearLayoutManager mManager = new LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false);
         StaggeredGridLayoutManager mManager = new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL);
         mRecyclerView.setLayoutManager(mManager);
         mRecyclerView.setAdapter(mAdapter);

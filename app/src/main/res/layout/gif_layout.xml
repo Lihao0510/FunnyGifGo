@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    android:background="#FFFFFFFF"
     android:orientation="vertical">
 
-    <ImageView
+    <!-- <ImageView
+         android:id="@+id/main_imageview"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_margin="3dp"
+         android:scaleType="fitCenter"
+         android:src="@drawable/ic_launcher" />-->
+
+    <pl.droidsonroids.gif.GifImageView
         android:id="@+id/main_imageview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:scaleType="fitCenter"
         android:src="@drawable/ic_launcher" />
+
 
     <TextView
         android:id="@+id/main_textview"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:singleLine="true"
         android:text="test"
-        android:gravity="center"
         android:textColor="#112233"
         android:textSize="18sp" />
 

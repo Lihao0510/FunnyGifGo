@@ -21,6 +21,7 @@ public class MainFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private MainAdapter mAdapter;
     private List<GifBean> mList ;
+    private static int page = 1;
 
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,19 +29,21 @@ public class MainFragment extends BaseFragment {
         mRecyclerView = (RecyclerView) view.findViewById(R.id.main_recyclerview);
         //initTestData(20);
         initDatas();
+
         return view;
     }
 
     private void initDatas() {
-        String url = Constants.BAOXIAO;
+        String url = Constants.BAOXIAO + Constants.SEPARATOR + page;
         GifTask task = new GifTask(mRecyclerView,mActivity);
         task.execute(url);
+        page++;
     }
 
     private void initTestData(int num) {
         mList = new ArrayList<>();
         for (int i = 0; i < num; i++) {
-            mList.add(new GifBean("Test" + i, "Lihao"));
+
         }
         mAdapter = new MainAdapter(mActivity,mList);
         StaggeredGridLayoutManager mManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);

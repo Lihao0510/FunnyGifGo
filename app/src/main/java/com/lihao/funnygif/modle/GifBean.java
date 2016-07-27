@@ -7,19 +7,24 @@ public class GifBean {
 
     public String title;
     public String gifUrl;
+    public int width;
+    public int height;
 
-    public GifBean(String title, String gifUrl) {
+    public GifBean(String title, String gifUrl, int width, int height) {
         this.title = title;
         this.gifUrl = gifUrl;
+        this.width = width;
+        this.height = height;
     }
 
-    public void setGifUrl(String gifUrl) {
-        this.gifUrl = gifUrl;
+    public int getWidth() {
+        return width;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public int getHeight() {
+        return height;
     }
+
 
     public String getGifUrl() {
         return gifUrl;
