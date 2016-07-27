@@ -36,9 +36,7 @@ public class MainFragment extends BaseFragment {
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.main_recyclerview);
-        //initTestData(20);
         initDatas();
-
         return view;
     }
 
@@ -49,14 +47,4 @@ public class MainFragment extends BaseFragment {
         page++;
     }
 
-    private void initTestData(int num) {
-        mList = new ArrayList<>();
-        for (int i = 0; i < num; i++) {
-
-        }
-        mAdapter = new MainAdapter(mActivity,mList);
-        StaggeredGridLayoutManager mManager = new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL);
-        mRecyclerView.setLayoutManager(mManager);
-        mRecyclerView.setAdapter(mAdapter);
-    }
 }
