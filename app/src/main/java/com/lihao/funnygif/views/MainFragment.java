@@ -22,9 +22,10 @@ public class MainFragment extends BaseFragment {
     private MainAdapter mAdapter;
     private List<GifBean> mList ;
     private static int page = 1;
+    private String category = Constants.BAOXIAO;
 
-    public MainFragment(){
-
+    public MainFragment(String category){
+        this.category = category;
     }
 
     @Override

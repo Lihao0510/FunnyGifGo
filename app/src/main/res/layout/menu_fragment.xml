@@ -36,7 +36,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:text="第四模块" />
+            android:text="经典搞笑    "
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
 
 
     </LinearLayout>
@@ -60,7 +62,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:text="第四模块" />
+            android:text="吓你一跳    "
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -84,7 +88,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:text="第四模块" />
+            android:text="作死教程    "
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -107,7 +113,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="center"
-            android:text="第四模块" />
+            android:text="涨涨姿势    "
+            android:textColor="@color/colorBlack"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

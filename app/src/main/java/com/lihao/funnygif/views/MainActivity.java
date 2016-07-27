@@ -24,6 +24,7 @@ import com.android.volley.toolbox.JsonRequest;
 import com.lihao.funnygif.R;
 import com.lihao.funnygif.adapters.MainAdapter;
 import com.lihao.funnygif.modle.GifBean;
+import com.lihao.funnygif.utils.Constants;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -51,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadDatas() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(), "Gif").commit();
-        contentTag = "Gif";
+        getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.BAOXIAO), "Baoxiao").commit();
+        contentTag = "Baoxiao";
     }
 
     private void initViews() {
@@ -80,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void refreshFragment() {
-        if (contentTag.equals("Gif")) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(), "Gif").commit();
+        if (contentTag.equals("Baoxiao")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.BAOXIAO), "Baoxiao").commit();
         }
     }
 
