@@ -23,6 +23,10 @@ public class MainFragment extends BaseFragment {
     private List<GifBean> mList ;
     private static int page = 1;
 
+    public MainFragment(){
+
+    }
+
     @Override
     protected View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
