@@ -18,6 +18,7 @@
         android:src="@drawable/menu_up_img" />
 
     <LinearLayout
+        android:id="@+id/module1"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFFFFFFF"
@@ -44,6 +45,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/module2"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFFFFFFF"
@@ -70,6 +72,7 @@
 
 
     <LinearLayout
+        android:id="@+id/module3"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFFFFFFF"
@@ -95,6 +98,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/module4"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#FFFFFFFF"

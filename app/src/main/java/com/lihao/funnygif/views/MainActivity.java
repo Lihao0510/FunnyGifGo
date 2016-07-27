@@ -11,8 +11,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.android.volley.NetworkResponse;
@@ -40,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
     private Toolbar mToolbar;
     private String contentTag;
     private long firstTime = 0L;
+    private LinearLayout module1;
+    private LinearLayout module2;
+    private LinearLayout module3;
+    private LinearLayout module4;
     private MenuFragment mMenuFragment;
 
     @Override
@@ -61,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawerlayout);
         fl_content = (FrameLayout) findViewById(R.id.fl_content);
         sr = (SwipeRefreshLayout) findViewById(R.id.sr);
+        module1 = (LinearLayout) findViewById(R.id.module1);
+        module2 = (LinearLayout) findViewById(R.id.module2);
+        module3 = (LinearLayout) findViewById(R.id.module3);
+        module4 = (LinearLayout) findViewById(R.id.module4);
+        setOnclickListener();
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(mToolbar);
         mToolbar.setTitle("搞笑GIF");
@@ -78,11 +89,57 @@ public class MainActivity extends AppCompatActivity {
         });
         sr.setEnabled(true);
         //mDrawerLayout.openDrawer(Gravity.LEFT);
+        //mDrawerLayout.closeDrawer(Gravity.LEFT);
+    }
+
+    private void setOnclickListener() {
+        module1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.BAOXIAO), "Baoxiao").commit();
+                contentTag = "Baoxiao";
+                MainFragment.page = 1;
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+            }
+        });
+        module2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.DIAOBAO), "Diaobao").commit();
+                contentTag = "Diaobao";
+                MainFragment.page = 1;
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+            }
+        });
+        module3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.BEIJU), "Beiju").commit();
+                contentTag = "Beiju";
+                MainFragment.page = 1;
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+            }
+        });
+        module4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.ZHANGZHISHI), "Zhangzishi").commit();
+                contentTag = "Zhangzishi";
+                MainFragment.page = 1;
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+            }
+        });
     }
 
     private void refreshFragment() {
         if (contentTag.equals("Baoxiao")) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.BAOXIAO), "Baoxiao").commit();
+        } else if (contentTag.equals("Diaobao")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.DIAOBAO), "Diaobao").commit();
+        } else if (contentTag.equals("Beiju")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.BEIJU), "Beiju").commit();
+        } else if (contentTag.equals("Zhangzishi")) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_content, new MainFragment(Constants.ZHANGZHISHI), "Zhangzishi").commit();
         }
     }
 
@@ -115,7 +172,17 @@ public class MainActivity extends AppCompatActivity {
         int itemID = item.getItemId();
         switch (itemID) {
             case R.id.action_lihao:
-                Toast.makeText(this, "作者:李昊", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "作者:李昊", Toast.LENGTH_SHORT).show();
+                android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(this);
+                builder.setTitle("作者:李昊");
+                builder.setMessage(
+                        "QQ:591353643\n" +
+                        "邮箱:lihao19910510@sina.com\n" +
+                        "本App所使用的所有GIF来源于互联网，\n" +
+                        "若被告知需停止共享与使用，\n" +
+                        "本人会及时删除页面与整个项目。");
+                builder.setPositiveButton("确定", null);
+                builder.show();
                 break;
             case R.id.action_settings:
                 Toast.makeText(this, "暂无设置", Toast.LENGTH_SHORT).show();

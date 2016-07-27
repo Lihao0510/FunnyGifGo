@@ -21,11 +21,15 @@ public class MainFragment extends BaseFragment {
     private RecyclerView mRecyclerView;
     private MainAdapter mAdapter;
     private List<GifBean> mList ;
-    private static int page = 1;
+    public static int page = 1;
     private String category = Constants.BAOXIAO;
 
     public MainFragment(String category){
         this.category = category;
+    }
+
+    public MainFragment(){
+
     }
 
     @Override
@@ -39,7 +43,7 @@ public class MainFragment extends BaseFragment {
     }
 
     private void initDatas() {
-        String url = Constants.BAOXIAO + Constants.SEPARATOR + page;
+        String url = category + Constants.SEPARATOR + page;
         GifTask task = new GifTask(mRecyclerView,mActivity);
         task.execute(url);
         page++;
