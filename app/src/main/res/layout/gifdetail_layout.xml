@@ -7,10 +7,20 @@
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif_detail"
-        android:scaleType="fitCenter"
-        android:layout_centerInParent="true"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:scaleType="fitCenter" />
+
+    <ImageButton
+        android:id="@+id/share"
+        android:layout_width="65dp"
+        android:layout_height="55dp"
+        android:background="#000000"
+        android:src="@drawable/share_folded"
+        android:scaleType="centerInside"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true" />
 
     <TextView
         android:id="@+id/text_detail"
@@ -18,9 +28,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:gravity="center"
-        android:textSize="18sp"
         android:lines="1"
         android:textColor="#FFFFFF"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

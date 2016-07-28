@@ -12,6 +12,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppToolbarTheme">
+        <activity android:name=".views.SettingActivity" />
         <activity android:name=".views.GifDetailActivity" />
         <activity
             android:name=".views.MainActivity"

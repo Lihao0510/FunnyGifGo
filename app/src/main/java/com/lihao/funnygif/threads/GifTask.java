@@ -44,7 +44,7 @@ public class GifTask extends AsyncTask<String, Void, List<GifBean>> {
                 Elements subLink = element.getElementsByTag("img");
                 for (Element subElement : subLink) {
                     String gifName = subElement.attr("alt");
-                    gifName = gifName.replace("的gif动态图片", ".");
+                    gifName = gifName.replace("的gif动态图片", "");
                     String gifUrl = subElement.attr("data-original");
                     String widthString = subElement.attr("width");
                     String heightString = subElement.attr("height");
