@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
 }
 
 dependencies {
@@ -30,4 +33,7 @@ dependencies {
     compile 'org.jsoup:jsoup:1.9.2'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
     compile 'com.github.rey5137:material:1.2.2'
+}
+repositories {
+    mavenCentral()
 }

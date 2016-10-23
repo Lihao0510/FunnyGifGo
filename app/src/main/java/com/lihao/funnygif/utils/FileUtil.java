@@ -13,7 +13,7 @@ import com.lihao.funnygif.MyApplication;
 /**
  * 本应用数据清除管理器
  */
-public class DataCleanManager {
+public class FileUtil {
 
     public static void cleanInternalCache(Context context) {
         deleteFilesByDirectory(MyApplication.supFile);
